@@ -16,7 +16,9 @@ module SumaPF(input logic [31:0] A,
 	logic [22:0] mantB;
 	assign mantB = B[22:0];
 	
-	
+	///Variables del resultado
+	logic [7:0] expRes;
+	logic [22:0] mantRes;
 	
 endmodule
 	
