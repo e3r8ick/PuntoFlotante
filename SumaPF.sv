@@ -20,5 +20,12 @@ module SumaPF(input logic [31:0] A,
 	logic [7:0] expRes;
 	logic [22:0] mantRes;
 	
+	restadorNbits 
+	#(8)
+	sumaN(expA,expB,expRes);
+	
+	
+	
+	
 endmodule
 	

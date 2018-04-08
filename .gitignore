@@ -3,6 +3,7 @@
 *.flock
 *.qpf
 *.qsf
+<<<<<<< HEAD
 *.qmsg
 *.logdb
 *.hdb
@@ -29,3 +30,6 @@ incremental_db/README
 *.summary
 *.bak
 *.qws
+=======
+*.bak
+>>>>>>> 598484bd9e780d88aa086fca16f392df6868936d
