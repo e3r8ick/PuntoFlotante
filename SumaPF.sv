@@ -17,12 +17,9 @@ module SumaPF(input logic [31:0] A,
 	assign mantB = B[22:0];
 	
 	//variables para mux1
-	logic [22:0] m10,m11;
 	logic [22:0] resultMux1;
 	
-	
 	//variables para mux2
-	logic [22:0] m20,m21;
 	logic [22:0] resultMux2;
 	
 	///Variables del resultado
@@ -43,11 +40,11 @@ module SumaPF(input logic [31:0] A,
 	
 	//MUX mantisas 1
 	MUXM
-	muxM1(m10, m11, control1, resultMux1);
+	muxM1(mantA, mantB, control1, resultMux1);
 		
 	//MUX mantisas 2
-	MUXM
-	muxM2(m20, m21, control2, resultMux2);
+	MUXM_Neg
+	muxM2(mantA, mantB, control2, resultMux2);
 	
 	//resultado para el complemento
 	logic[7: 0] expComp;
