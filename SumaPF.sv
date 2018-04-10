@@ -27,7 +27,7 @@ module SumaPF(input logic [31:0] A,
 	logic [22:0] mantRes;
 	logic signRes;
 	
-	//comprar exponentes
+	//comparar exponentes
 	restadorNbits 
 	#(8)
 	restaN(expA,expB,expRes);
@@ -51,11 +51,14 @@ module SumaPF(input logic [31:0] A,
 	
 	//complemento
 	complement
-	complement(expRes,expComp);
+	complemento(expRes,expComp);
+	
+	//Resultado de shift
+	logic[22:0] corri;
 	
 	//shift
 	srlN
-	srlN(resultMux2,expComp);
+	mysrlN(resultMux1,expComp,corri);
 	
 	//variables para la suma
 	logic carryin;
@@ -66,18 +69,18 @@ module SumaPF(input logic [31:0] A,
 	//suma de mantisas
 	sumadorNbits 
 	#(8)
-	sumaN(resultMux1,resultMux2,carryin,carryout,sumaRes);
+	sumaN(corri,resultMux2,carryin,carryout,sumaRes);
 	 
 	//and del bit de signo
-	logic bitSigno;
-	assign bitSigno = sumaRes[22];
-	logic andRes;
-	PFand
-	myand(bitSigno,1,andRes);
+	//logic bitSigno;
+	//assign bitSigno = sumaRes[22];
+	//logic andRes;
+	//PFand
+	//myand(bitSigno,1,andRes);
 	
-	//shift
+	//shift de normalizacion
 	srlN
-	alineamiento(sumaRes,andRes);
+	alineamiento(sumaRes,carryout);
 	
 	//variables para muxE
 	logic [7:0] mE0,mE1;
@@ -87,18 +90,21 @@ module SumaPF(input logic [31:0] A,
 	
 	//mux exponentes
 	MUXE
-	muxE(mE0, mE1, controlE, resultMux2);
+	mymuxE(expA, expB, controlE, resultMuxE);
 	
 	//variables para la suma
 	logic carryin2;
-	assign carryin2 = andRes;
+	assign carryin2 = 0;
 	logic carryout2;
 	logic [22:0] sumaResF;
 	
 	//suma para alinearr
 	sumadorNbits 
 	#(8)
-	sumaA(resultMuxE,0,carryin2,carryout2,sumaResF);
+	sumaExp(resultMuxE,carryout,carryin2,carryout2,sumaResF);
+	
+	//Unir
+	
 	
 endmodule
 	
