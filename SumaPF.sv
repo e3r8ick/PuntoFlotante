@@ -72,8 +72,8 @@ module SumaPF(input logic [31:0] A,
 	logic bitSigno;
 	assign bitSigno = sumaRes[22];
 	logic andRes;
-	AND
-	AND(bitSigno,1,andRes);
+	PFand
+	myand(bitSigno,1,andRes);
 	
 	//shift
 	srlN
@@ -87,7 +87,7 @@ module SumaPF(input logic [31:0] A,
 	
 	//mux exponentes
 	MUXE
-	muxE(mE0, mE1, control2, resultMux2);
+	muxE(mE0, mE1, controlE, resultMux2);
 	
 	//variables para la suma
 	logic carryin2;

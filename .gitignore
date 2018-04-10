@@ -33,3 +33,4 @@ incremental_db/README
 =======
 *.bak
 >>>>>>> 598484bd9e780d88aa086fca16f392df6868936d
+*.nvd

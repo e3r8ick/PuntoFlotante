@@ -1,4 +1,4 @@
-module AND(input logic a,
+module PFand(input logic a,
 		input logic b,
 		output logic y);
 
