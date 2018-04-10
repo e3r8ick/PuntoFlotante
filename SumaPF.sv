@@ -93,19 +93,19 @@ module SumaPF(input logic [31:0] A,
 	mymuxE(expA, expB, controlE, resultMuxE);
 	
 	//variables para la suma
-	logic carryin2;
-	assign carryin2 = 0;
+	//logic carryin2;
+	//assign carryin2 = 0;
 	logic carryout2;
 	logic [7:0] sumaResF;
 	
 	//suma para alinearr
 	sumadorNbits 
 	#(8)
-	sumaExp(resultMuxE,carryout,carryin2,carryout2,sumaResF);
-	
-	assign result = {sign,sumaResF[7:0], sumaRes[22:0]};
+	sumaExp(resultMuxE,0,carryout,carryout2,sumaResF);
 	
 	//Unir
+	assign result = {sign,sumaResF[7:0], sumaRes[22:0]};
+		
 	
 	
 endmodule
