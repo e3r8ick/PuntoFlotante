@@ -68,7 +68,7 @@ module SumaPF(input logic [31:0] A,
 	 
 	//suma de mantisas
 	sumadorNbits 
-	#(8)
+	#(23)
 	sumaN(corri,resultMux2,carryin,carryout,sumaRes);
 	 
 	//and del bit de signo
