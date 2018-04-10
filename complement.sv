@@ -13,7 +13,7 @@ module complement(input logic[7: 0] A,
 	 
 	 //bits para suma de uno
 	 logic [7:0] sum;
-	 assign sum = 00000001;
+	 assign sum = 8'b00000001;
 	 //carry in para la suma
 	 logic carryin;
 	 assign carryin = 0;
@@ -21,10 +21,10 @@ module complement(input logic[7: 0] A,
 		
 	 always @* begin
 		if(msb==0) begin
-			xorbits<=00000000;
+			xorbits<=8'b00000000;
 		end
 		else begin
-			xorbits<=11111111;
+			xorbits<=8'b11111111;
 		end
 	 end
 	 
