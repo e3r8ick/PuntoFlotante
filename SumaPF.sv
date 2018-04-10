@@ -96,12 +96,14 @@ module SumaPF(input logic [31:0] A,
 	logic carryin2;
 	assign carryin2 = 0;
 	logic carryout2;
-	logic [22:0] sumaResF;
+	logic [7:0] sumaResF;
 	
 	//suma para alinearr
 	sumadorNbits 
 	#(8)
 	sumaExp(resultMuxE,carryout,carryin2,carryout2,sumaResF);
+	
+	assign result = {sign,sumaResF[7:0], sumaRes[22:0]};
 	
 	//Unir
 	
