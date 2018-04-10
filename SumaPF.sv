@@ -79,8 +79,10 @@ module SumaPF(input logic [31:0] A,
 	//myand(bitSigno,1,andRes);
 	
 	//shift de normalizacion
+	logic[22:0] corrinormal;
+	
 	srlN
-	alineamiento(sumaRes,carryout);
+	alineamiento(sumaRes,carryout,corrinormal);
 	
 	//variables para muxE
 	logic [7:0] mE0,mE1;
@@ -104,7 +106,7 @@ module SumaPF(input logic [31:0] A,
 	sumaExp(resultMuxE,0,carryout,carryout2,sumaResF);
 	
 	//Unir
-	assign result = {sign,sumaResF[7:0], sumaRes[22:0]};
+	assign result = {sign,sumaResF[7:0], corrinormal[22:0]};
 		
 	
 	
